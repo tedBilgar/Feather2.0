@@ -1,5 +1,7 @@
 package com.tedbilgar.feather.domain;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +19,14 @@ public class Group {
             mappedBy = "groups"
     )
     private Set<User> users = new HashSet<>();
+
+    public Group() {
+    }
+
+    public Group(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

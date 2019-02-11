@@ -16,4 +16,9 @@ public class UserAndGroupController {
     public void setRelation(@RequestParam("userId") Long userId,@RequestParam("groupId") Long groupId){
         userAndGroupService.setRelation(userId,groupId);
     }
+
+    @RequestMapping("/test")
+    public void test(){
+
+    }
 }

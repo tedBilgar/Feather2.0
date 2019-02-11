@@ -23,7 +23,7 @@ public class GroupRestController {
         return groupRepo.findGroupById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public Group add(@RequestBody Group group){
         groupRepo.save(group);
         return group;
@@ -32,5 +32,11 @@ public class GroupRestController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id){
         groupRepo.deleteById(id);
+    }
+
+    @GetMapping("test")
+    public void test(){
+        Group group = new Group("First");
+        groupRepo.save(group);
     }
 }
