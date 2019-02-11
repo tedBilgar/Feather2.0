@@ -51,7 +51,7 @@ public class HomeController {
 
         model.put("messages", messages);
 
-        return "main";
+        return "redirect:/main";
     }
 
 
