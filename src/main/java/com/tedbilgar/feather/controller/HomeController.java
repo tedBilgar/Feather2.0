@@ -1,7 +1,7 @@
 package com.tedbilgar.feather.controller;
 
 import com.tedbilgar.feather.domain.Message;
-import com.tedbilgar.feather.domain.User;
+import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.repository.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

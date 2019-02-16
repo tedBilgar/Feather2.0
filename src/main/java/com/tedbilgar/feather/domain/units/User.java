@@ -1,5 +1,8 @@
-package com.tedbilgar.feather.domain;
+package com.tedbilgar.feather.domain.units;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tedbilgar.feather.domain.Role;
+import com.tedbilgar.feather.domain.units.Group;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,6 +33,7 @@ public class User implements UserDetails {
             joinColumns = { @JoinColumn(name = "user_id")},
             inverseJoinColumns = { @JoinColumn(name = "group_id")}
     )
+    @JsonIgnore
     private Set<Group> groups = new HashSet<>();
 
 

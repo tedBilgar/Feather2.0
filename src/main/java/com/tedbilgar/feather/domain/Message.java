@@ -1,5 +1,7 @@
 package com.tedbilgar.feather.domain;
 
+import com.tedbilgar.feather.domain.units.User;
+
 import javax.persistence.*;
 
 @Entity

@@ -1,10 +1,11 @@
 package com.tedbilgar.feather.controller;
 
 import com.tedbilgar.feather.domain.Role;
-import com.tedbilgar.feather.domain.User;
+import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.repository.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public String userList(Model model){

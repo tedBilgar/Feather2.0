@@ -1,6 +1,6 @@
 package com.tedbilgar.feather.rest_controller.user_controller;
 
-import com.tedbilgar.feather.domain.User;
+import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.repository.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.tedbilgar.feather.rest_controller.group_controller;
 
-import com.tedbilgar.feather.domain.Group;
+import com.tedbilgar.feather.domain.units.Group;
 import com.tedbilgar.feather.repository.group_repo.GroupRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
