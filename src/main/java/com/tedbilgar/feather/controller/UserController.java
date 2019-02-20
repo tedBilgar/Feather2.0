@@ -1,6 +1,6 @@
 package com.tedbilgar.feather.controller;
 
-import com.tedbilgar.feather.domain.Role;
+import com.tedbilgar.feather.domain.roles.Role;
 import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.repository.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
 package com.tedbilgar.feather.domain.units;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tedbilgar.feather.domain.Role;
-import com.tedbilgar.feather.domain.units.Group;
+import com.tedbilgar.feather.domain.roles.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -27,14 +26,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_groups",
-            joinColumns = { @JoinColumn(name = "user_id")},
-            inverseJoinColumns = { @JoinColumn(name = "group_id")}
-    )
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Group> groups = new HashSet<>();
+    private Set<UserGroup> userGroups = new HashSet<>();
 
 
     public Long getId() {
@@ -102,11 +96,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public Set<Group> getGroups() {
-        return groups;
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
     }
 
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

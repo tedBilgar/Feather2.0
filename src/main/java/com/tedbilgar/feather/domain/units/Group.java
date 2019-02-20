@@ -15,11 +15,9 @@ public class Group {
 
     private String name;
 
-    @ManyToMany(
-            mappedBy = "groups"
-    )
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<User> users = new HashSet<>();
+    private Set<UserGroup> userGroups = new HashSet<>();
 
     public Group() {
     }
@@ -44,11 +42,11 @@ public class Group {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

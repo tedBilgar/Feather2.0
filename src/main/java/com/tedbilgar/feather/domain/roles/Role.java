@@ -1,4 +1,4 @@
-package com.tedbilgar.feather.domain;
+package com.tedbilgar.feather.domain.roles;
 
 import org.springframework.security.core.GrantedAuthority;
 
