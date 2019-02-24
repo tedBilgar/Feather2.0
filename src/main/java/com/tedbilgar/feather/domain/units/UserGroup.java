@@ -9,12 +9,12 @@ public class UserGroup implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn
-    private User user;
+    private Group group;
 
     @Id
     @ManyToOne
     @JoinColumn
-    private Group group;
+    private User user;
 
     private String role;
 

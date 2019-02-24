@@ -15,7 +15,7 @@ public class Group {
 
     private String name;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<UserGroup> userGroups = new HashSet<>();
 
