@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("rest/user")
@@ -35,11 +36,15 @@ public class UserRestController {
     }
 
     @GetMapping("/test")
-    public String setGroup(){
+    public void setGroup(){
         User user = userRepo.findAllById(1L);
-        List<UserGroup> userList = new ArrayList<>();
-        userList.addAll(user.getUserGroups());
-        return userList.get(0).getGroup().getName();
+        Group group = groupRepo.findGroupById(6L);
+        UserGroup userGroup = new UserGroup(user,group,"USER");
+
+        user.getUserGroups().add(userGroup);
+
+        groupRepo.save(group);
+        userRepo.save(user);
     }
 
 }

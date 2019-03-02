@@ -8,12 +8,12 @@ import java.io.Serializable;
 public class UserGroup implements Serializable {
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "group_id")
     private Group group;
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String role;
