@@ -34,9 +34,4 @@ public class GroupRestController {
         groupRepo.deleteById(id);
     }
 
-    @GetMapping("test")
-    public void test(){
-        Group group = new Group("First");
-        groupRepo.save(group);
-    }
 }
