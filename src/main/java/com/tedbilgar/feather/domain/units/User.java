@@ -2,6 +2,7 @@ package com.tedbilgar.feather.domain.units;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tedbilgar.feather.domain.roles.Role;
+import com.tedbilgar.feather.domain.task_units_relation.UserDesk;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,6 +31,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<UserGroup> userGroups = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserDesk> userDesks = new HashSet<>();
 
 
     public Long getId() {
@@ -103,5 +108,13 @@ public class User implements UserDetails {
 
     public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
+    }
+
+    public Set<UserDesk> getUserDesks() {
+        return userDesks;
+    }
+
+    public void setUserDesks(Set<UserDesk> userDesks) {
+        this.userDesks = userDesks;
     }
 }

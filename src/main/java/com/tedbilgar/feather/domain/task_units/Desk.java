@@ -1,8 +1,13 @@
 package com.tedbilgar.feather.domain.task_units;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tedbilgar.feather.domain.task_units_relation.UserDesk;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "desk")
@@ -16,6 +21,10 @@ public class Desk {
 
     @OneToMany(mappedBy = "desk", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskList> taskLists;
+
+    @OneToMany(mappedBy = "desk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserDesk> userDesks = new HashSet<>();
 
     public Desk() {
     }

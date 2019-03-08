@@ -23,7 +23,7 @@ public class GroupRestController {
         return groupRepo.findGroupById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public Group add(@RequestBody Group group){
         groupRepo.save(group);
         return group;

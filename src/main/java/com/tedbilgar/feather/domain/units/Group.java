@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "groups")
+@Table(name = "grp")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,6 @@ public class Group {
 
     public Group() {
     }
-
 
     public Group(String name) {
         this.name = name;
