@@ -8,7 +8,8 @@ import java.util.List;
 @Table(name = "task_list")
 public class TaskList {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     private String name;

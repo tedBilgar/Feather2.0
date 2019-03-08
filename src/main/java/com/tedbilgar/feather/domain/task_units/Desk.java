@@ -8,7 +8,8 @@ import java.util.List;
 @Table(name = "desk")
 public class Desk {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     private String name;
