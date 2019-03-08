@@ -2,7 +2,7 @@ package com.tedbilgar.feather.controller;
 
 import com.tedbilgar.feather.domain.roles.Role;
 import com.tedbilgar.feather.domain.units.User;
-import com.tedbilgar.feather.repository.user_repo.UserRepo;
+import com.tedbilgar.feather.repository.unit_package.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

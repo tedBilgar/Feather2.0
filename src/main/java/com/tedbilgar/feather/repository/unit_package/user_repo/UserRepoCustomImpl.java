@@ -1,4 +1,4 @@
-package com.tedbilgar.feather.repository.user_repo;
+package com.tedbilgar.feather.repository.unit_package.user_repo;
 
 import com.tedbilgar.feather.domain.units.UserGroup;
 import org.springframework.stereotype.Repository;

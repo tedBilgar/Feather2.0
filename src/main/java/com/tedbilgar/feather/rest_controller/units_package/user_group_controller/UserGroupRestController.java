@@ -1,16 +1,14 @@
-package com.tedbilgar.feather.rest_controller.user_group_controller;
+package com.tedbilgar.feather.rest_controller.units_package.user_group_controller;
 
 import com.tedbilgar.feather.domain.units.Group;
 import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.domain.units.UserGroup;
-import com.tedbilgar.feather.repository.group_repo.GroupRepo;
-import com.tedbilgar.feather.repository.user_repo.UserRepo;
+import com.tedbilgar.feather.repository.unit_package.group_repo.GroupRepo;
+import com.tedbilgar.feather.repository.unit_package.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("rest/user-group")

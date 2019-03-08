@@ -3,7 +3,7 @@ package com.tedbilgar.feather.service;
 import com.tedbilgar.feather.domain.units.Group;
 import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.domain.units.UserGroup;
-import com.tedbilgar.feather.repository.user_repo.UserRepo;
+import com.tedbilgar.feather.repository.unit_package.user_repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

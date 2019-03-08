@@ -1,9 +1,8 @@
-package com.tedbilgar.feather.repository.user_repo;
+package com.tedbilgar.feather.repository.unit_package.user_repo;
 
 import com.tedbilgar.feather.domain.units.UserGroup;
 
 import java.util.List;
-import java.util.Set;
 
 public interface UserRepoCustom {
     List<UserGroup> getAllUserGroups();
