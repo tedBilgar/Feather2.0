@@ -3,6 +3,7 @@ package com.tedbilgar.feather.domain.units;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tedbilgar.feather.domain.roles.Role;
 import com.tedbilgar.feather.domain.task_units_relation.UserDesk;
+import com.tedbilgar.feather.domain.task_units_relation.UserTask;
 import com.tedbilgar.feather.domain.task_units_relation.UserTaskList;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,16 +42,23 @@ public class User implements UserDetails {
     @JsonIgnore
     private Set<UserTaskList> userTaskLists = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserTask> userTasks = new HashSet<>();
+
+
     public User() {
     }
 
-    public User(String username, String password, boolean active, Set<Role> roles, Set<UserGroup> userGroups, Set<UserDesk> userDesks) {
+    public User(String username, String password, boolean active, Set<Role> roles, Set<UserGroup> userGroups, Set<UserDesk> userDesks, Set<UserTaskList> userTaskLists, Set<UserTask> userTasks) {
         this.username = username;
         this.password = password;
         this.active = active;
         this.roles = roles;
         this.userGroups = userGroups;
         this.userDesks = userDesks;
+        this.userTaskLists = userTaskLists;
+        this.userTasks = userTasks;
     }
 
     public Long getId() {
@@ -140,5 +148,13 @@ public class User implements UserDetails {
 
     public void setUserTaskLists(Set<UserTaskList> userTaskLists) {
         this.userTaskLists = userTaskLists;
+    }
+
+    public Set<UserTask> getUserTasks() {
+        return userTasks;
+    }
+
+    public void setUserTasks(Set<UserTask> userTasks) {
+        this.userTasks = userTasks;
     }
 }

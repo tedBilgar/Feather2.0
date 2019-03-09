@@ -1,7 +1,12 @@
 package com.tedbilgar.feather.domain.task_units;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tedbilgar.feather.domain.task_units_relation.UserTask;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "task")
@@ -20,16 +25,21 @@ public class Task {
     @JoinColumn(name = "taskList_id")
     private TaskList taskList;
 
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserTask> userTasks = new HashSet<>();
+
 
     public Task() {
     }
 
-    public Task(String name, String discription, Date start_time, Date end_time, TaskList taskList) {
+    public Task(String name, String discription, Date start_time, Date end_time, TaskList taskList, Set<UserTask> userTasks) {
         this.name = name;
         this.discription = discription;
         this.start_time = start_time;
         this.end_time = end_time;
         this.taskList = taskList;
+        this.userTasks = userTasks;
     }
 
     public Long getId() {
@@ -78,5 +88,13 @@ public class Task {
 
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
+    }
+
+    public Set<UserTask> getUserTasks() {
+        return userTasks;
+    }
+
+    public void setUserTasks(Set<UserTask> userTasks) {
+        this.userTasks = userTasks;
     }
 }
