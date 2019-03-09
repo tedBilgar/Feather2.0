@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_groups")
+@Table(name = "usr_grp")
 public class UserGroup implements Serializable {
     @Id
     @ManyToOne

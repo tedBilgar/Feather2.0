@@ -1,12 +1,6 @@
 package com.tedbilgar.feather.repository.unit_package.user_repo.desk;
 
-import com.tedbilgar.feather.domain.task_units.Desk;
 import com.tedbilgar.feather.domain.task_units_relation.UserDesk;
-import com.tedbilgar.feather.domain.units.User;
-import com.tedbilgar.feather.domain.units.UserGroup;
-import com.tedbilgar.feather.repository.task_unit_controller.desk_repo.DeskRepo;
-import com.tedbilgar.feather.repository.unit_package.user_repo.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -25,6 +19,15 @@ public class DeskRepoCustomImpl implements DeskRepoCustom {
     public List<UserDesk> findAllUserDesks() {
         Query query = entityManager.createNativeQuery("select * from user_desk as ud  ", UserDesk.class);
         return query.getResultList();
+    }
+
+    @Override
+    public UserDesk findUserDesk(Long userId, Long deskId) {
+        Query query = entityManager.createNativeQuery("select * from user_desk as ud where user_id = :userId and desk_id = :deskId", UserDesk.class);
+        query.setParameter("userId",userId);
+        query.setParameter("deskId",deskId);
+        return (UserDesk) query.getResultStream().findFirst().orElse(null);
+
     }
 
     @Override

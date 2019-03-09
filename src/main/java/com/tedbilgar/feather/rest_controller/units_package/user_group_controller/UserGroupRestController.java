@@ -23,6 +23,10 @@ public class UserGroupRestController {
         return userRepo.getAllUserGroups();
     }
 
+    @GetMapping("get")
+    public UserGroup getUserGroup(@RequestParam Long userId,@RequestParam Long groupId){
+        return userRepo.getUserGroup(userId,groupId);
+    }
     @GetMapping("user/{id}")
     public List<UserGroup> getByUserId(@PathVariable Long id){
         return userRepo.getByUserId(id);
@@ -34,9 +38,19 @@ public class UserGroupRestController {
 
     @GetMapping("set")
     public void setRelation(@RequestParam Long userId, @RequestParam Long groupId, @RequestParam String role){
+        UserGroup userGroupDB = getUserGroup(userId,groupId);
         User user = userRepo.findAllById(userId);
         Group group = groupRepo.findGroupById(groupId);
-        UserGroup userGroup = new UserGroup(user,group,"USER");
+
+        if (userGroupDB != null){
+            userGroupDB.setRole(role);
+            user.getUserGroups().add(userGroupDB);
+            groupRepo.save(group);
+            userRepo.save(user);
+            return;
+        }
+
+        UserGroup userGroup = new UserGroup(user,group,role);
 
         user.getUserGroups().add(userGroup);
 

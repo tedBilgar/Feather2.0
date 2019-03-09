@@ -16,15 +16,16 @@ public class Group {
 
     private String name;
 
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserGroup> userGroups = new HashSet<>();
 
     public Group() {
     }
 
-    public Group(String name) {
+    public Group(String name, Set<UserGroup> userGroups) {
         this.name = name;
+        this.userGroups = userGroups;
     }
 
     public Long getId() {

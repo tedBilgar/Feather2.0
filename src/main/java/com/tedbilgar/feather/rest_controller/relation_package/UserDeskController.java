@@ -23,6 +23,11 @@ public class UserDeskController {
         return userRepo.findAllUserDesks();
     }
 
+    @GetMapping("get")
+    public UserDesk findUserDesk(@RequestParam Long userId, @RequestParam Long deskId){
+        return userRepo.findUserDesk(userId,deskId);
+    }
+
     @GetMapping("desk/{id}")
     public List<UserDesk> findAllUsersByDesk(@PathVariable Long id){
         return userRepo.findAllUserByDesk(id);
@@ -35,8 +40,18 @@ public class UserDeskController {
 
     @GetMapping("set")
     public void setRelation(@RequestParam Long userId,@RequestParam Long deskId, @RequestParam String role){
+        UserDesk userDeskDB = findUserDesk(userId,deskId);
         User user = userRepo.findAllById(userId);
         Desk desk = deskRepo.findDeskById(deskId);
+
+        if(userDeskDB !=null){
+            userDeskDB.setRole(role);
+            user.getUserDesks().add(userDeskDB);
+            deskRepo.save(desk);
+            userRepo.save(user);
+            return;
+        }
+
         UserDesk userDesk = new UserDesk(user,desk,role);
 
         user.getUserDesks().add(userDesk);

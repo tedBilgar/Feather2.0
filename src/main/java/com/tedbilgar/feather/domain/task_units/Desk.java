@@ -29,9 +29,10 @@ public class Desk {
     public Desk() {
     }
 
-    public Desk(String name, List<TaskList> taskLists) {
+    public Desk(String name, List<TaskList> taskLists, Set<UserDesk> userDesks) {
         this.name = name;
         this.taskLists = taskLists;
+        this.userDesks = userDesks;
     }
 
     public Long getId() {

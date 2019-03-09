@@ -36,6 +36,17 @@ public class User implements UserDetails {
     @JsonIgnore
     private Set<UserDesk> userDesks = new HashSet<>();
 
+    public User() {
+    }
+
+    public User(String username, String password, boolean active, Set<Role> roles, Set<UserGroup> userGroups, Set<UserDesk> userDesks) {
+        this.username = username;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.userGroups = userGroups;
+        this.userDesks = userDesks;
+    }
 
     public Long getId() {
         return id;

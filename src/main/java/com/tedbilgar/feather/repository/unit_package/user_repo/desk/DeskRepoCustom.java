@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface DeskRepoCustom {
     List<UserDesk> findAllUserDesks();
+    UserDesk findUserDesk(Long userId,Long deskId);
     List<UserDesk> findAllUserByDesk(Long deskId);
     List<UserDesk> findAllDeskByUser(Long userId);
 
