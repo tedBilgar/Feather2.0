@@ -3,6 +3,7 @@ package com.tedbilgar.feather.domain.units;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tedbilgar.feather.domain.roles.Role;
 import com.tedbilgar.feather.domain.task_units_relation.UserDesk;
+import com.tedbilgar.feather.domain.task_units_relation.UserTaskList;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -35,6 +36,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<UserDesk> userDesks = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserTaskList> userTaskLists = new HashSet<>();
 
     public User() {
     }
@@ -127,5 +132,13 @@ public class User implements UserDetails {
 
     public void setUserDesks(Set<UserDesk> userDesks) {
         this.userDesks = userDesks;
+    }
+
+    public Set<UserTaskList> getUserTaskLists() {
+        return userTaskLists;
+    }
+
+    public void setUserTaskLists(Set<UserTaskList> userTaskLists) {
+        this.userTaskLists = userTaskLists;
     }
 }

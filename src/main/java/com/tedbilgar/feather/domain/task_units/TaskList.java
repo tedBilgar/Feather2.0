@@ -1,8 +1,13 @@
 package com.tedbilgar.feather.domain.task_units;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tedbilgar.feather.domain.task_units_relation.UserTaskList;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "task_list")
@@ -18,11 +23,17 @@ public class TaskList {
     private Date end_time;
 
     @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Task> tasks;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "desk_id")
+    @JsonIgnore
     private Desk desk;
+
+    @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<UserTaskList> userTaskLists = new HashSet<>();
 
     public TaskList() {
     }
@@ -81,5 +92,21 @@ public class TaskList {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Desk getDesk() {
+        return desk;
+    }
+
+    public void setDesk(Desk desk) {
+        this.desk = desk;
+    }
+
+    public Set<UserTaskList> getUserTaskLists() {
+        return userTaskLists;
+    }
+
+    public void setUserTaskLists(Set<UserTaskList> userTaskLists) {
+        this.userTaskLists = userTaskLists;
     }
 }
