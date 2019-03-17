@@ -37,4 +37,6 @@ dependencies {
 	compile('javax.xml.bind:jaxb-api')
 	compile('com.sun.xml.bind:jaxb-core')
 	compile('com.sun.xml.bind:jaxb-impl')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
 }

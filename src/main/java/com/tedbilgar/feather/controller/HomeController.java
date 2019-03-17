@@ -20,8 +20,8 @@ public class HomeController {
     private MessageRepo messageRepo;
 
     @GetMapping("/")
-    public String greeting(Map<String, Object> model) {
-        return "greeting";
+    public String greeting() {
+        return "index";
     }
 
     @GetMapping("/main")
