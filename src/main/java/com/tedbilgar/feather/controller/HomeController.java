@@ -1,58 +1,43 @@
 package com.tedbilgar.feather.controller;
 
-import com.tedbilgar.feather.domain.Message;
+
 import com.tedbilgar.feather.domain.units.User;
-import com.tedbilgar.feather.repository.MessageRepo;
+import com.tedbilgar.feather.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-
-import java.util.Map;
 
 @Controller
 @RequestMapping
 public class HomeController {
 
     @Autowired
-    private MessageRepo messageRepo;
+    private UserService userService;
 
-    @GetMapping("/")
-    public String greeting() {
-        return "index";
+    private User getAuth(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) userService.loadUserByUsername(auth.getName());
+        return user;
     }
 
-    @GetMapping("/main")
-    public  String main(@RequestParam(required = false, defaultValue = "") String filter, Model model){
-        Iterable<Message> messages = messageRepo.findAll();
-
-        if (filter != null && !filter.isEmpty()) {
-            messages = messageRepo.findByTag(filter);
-        } else {
-            messages = messageRepo.findAll();
-        }
-
-        model.addAttribute("messages",messages);
-        model.addAttribute("filter",filter);
-
-        return "main";
+    @GetMapping("")
+    public ModelAndView getMain(Model model){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user",getAuth());
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
-    @PostMapping("/main")
-    public String add(@AuthenticationPrincipal User user,
-            @RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
-        Message message = new Message(text, tag, user);
-
-        messageRepo.save(message);
-
-        Iterable<Message> messages = messageRepo.findAll();
-
-        model.put("messages", messages);
-
-        return "redirect:/main";
+    @GetMapping("/desks")
+    public ModelAndView getDesks(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user",getAuth());
+        modelAndView.setViewName("work/desk");
+        return modelAndView;
     }
-
-
 }
