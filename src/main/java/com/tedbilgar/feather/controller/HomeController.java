@@ -40,4 +40,13 @@ public class HomeController {
         modelAndView.setViewName("work/desk");
         return modelAndView;
     }
+
+
+    @GetMapping("/lists")
+    public ModelAndView getLists(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user",getAuth());
+        modelAndView.setViewName("work/list");
+        return modelAndView;
+    }
 }

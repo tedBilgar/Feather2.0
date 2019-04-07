@@ -7,7 +7,7 @@ var app = new Vue({
         },
         mounted () {
             axios
-                .get('http://localhost:9000/rest/user-desk/user/1')
+                .get('http://localhost:9000/rest/user-desk/user/3')
                 .then(response => (this.info = response.data))
         }
     });
