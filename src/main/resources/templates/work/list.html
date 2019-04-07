@@ -339,12 +339,12 @@
             <!-- End of Topbar -->
 
             <!--Business logic-->
-            <div id="app">
+            <div id="app" class="col-10">
                 <div class="card-group" style="margin-left: 4%;margin-right: 4%;">
-                    <div class="card border border-info" style="width: 18rem; margin-left: 0.5%;margin-right: 0.5%; border" v-for="desk in info">
+                    <div class="" style="width: 18rem; margin-left: 0.5%;margin-right: 0.5%; border" v-for="list in info">
                     </div>
                 </div>
-                <user-lists th:attr="user-id=${user.id}"></user-lists>
+                <user-lists th:attr="desk-id=${deskId}"></user-lists>
             </div>
 
         </div>
@@ -409,7 +409,7 @@
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
 <script src="/js/viewjs/index.js"></script>
-<script src="/js/viewjs/components/desk.js"></script>
+<script src="/js/viewjs/components/list.js"></script>
 
 
 

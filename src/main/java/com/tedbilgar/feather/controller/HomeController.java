@@ -42,9 +42,10 @@ public class HomeController {
     }
 
 
-    @GetMapping("/lists")
-    public ModelAndView getLists(){
+    @GetMapping("/lists/{deskId}")
+    public ModelAndView getLists(@PathVariable Long deskId){
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("deskId",deskId);
         modelAndView.addObject("user",getAuth());
         modelAndView.setViewName("work/list");
         return modelAndView;

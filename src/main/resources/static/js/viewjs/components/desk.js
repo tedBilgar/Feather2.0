@@ -4,7 +4,7 @@ Vue.component('user-desks', {
         '                    <div class="card border border-info" style="width: 18rem; margin-left: 0.5%;margin-right: 0.5%; border" v-for="desk in info">\n' +
         '                        <img class="card-img-top" src="/img/undraw_posting_photo.svg" alt="Card image cap">\n' +
         '                        <div class="card-body">\n' +
-        '                            <p class="card-text">{{ desk.desk.name }}</p>\n' +
+        '                            <a v-bind:href="/lists/ + desk.desk.id"><p class="card-text">{{ desk.desk.name }}</p></a>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>',
