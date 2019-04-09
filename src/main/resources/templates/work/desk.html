@@ -340,10 +340,6 @@
 
             <!--Business logic-->
             <div id="app">
-                <div class="card-group" style="margin-left: 4%;margin-right: 4%;">
-                    <div class="" style="width: 18rem; margin-left: 0.5%;margin-right: 0.5%; border" v-for="desk in info">
-                    </div>
-                </div>
                 <user-desks th:attr="user-id=${user.id}"></user-desks>
             </div>
 
@@ -408,7 +404,6 @@
 <!-- Page level custom scripts -->
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="/js/viewjs/index.js"></script>
 <script src="/js/viewjs/components/desk.js"></script>
 
 
