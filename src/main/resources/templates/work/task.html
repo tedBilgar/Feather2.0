@@ -339,11 +339,9 @@
             <!-- End of Topbar -->
 
             <!--Business logic-->
-            <div id="app">
-                <user-desks th:attr="user-id=${user.id}"></user-desks>
+            <div id="app" class="col-10">
+                <user-tasks th:attr="tasklist-id=${tasklistId}"></user-tasks>
             </div>
-                <img src="/home/denis/IdeaProjects/Feather2.0/src/main/resources/static/img/newItem.svg" alt="Card image cap">
-
 
         </div>
         <!-- End of Main Content -->
@@ -406,7 +404,7 @@
 <!-- Page level custom scripts -->
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="/js/viewjs/components/desk.js"></script>
+<script src="/js/viewjs/components/task.js"></script>
 
 
 

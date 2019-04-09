@@ -1,6 +1,5 @@
 package com.tedbilgar.feather.controller;
 
-
 import com.tedbilgar.feather.domain.units.User;
 import com.tedbilgar.feather.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,15 @@ public class HomeController {
         modelAndView.addObject("deskId",deskId);
         modelAndView.addObject("user",getAuth());
         modelAndView.setViewName("work/list");
+        return modelAndView;
+    }
+
+    @GetMapping("/tasks/{tasklistId}")
+    public ModelAndView getTasks(@PathVariable Long tasklistId){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("tasklistId",tasklistId);
+        modelAndView.addObject("user",getAuth());
+        modelAndView.setViewName("work/task");
         return modelAndView;
     }
 }
