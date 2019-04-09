@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
 
@@ -84,12 +84,12 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Сообщество</span>
+                <span>Cообщество</span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="/deskcommunity">Доски</a>
+                    <a class="collapse-item" href="utilities-color.html">Доски</a>
                     <a class="collapse-item" href="utilities-border.html">Borders</a>
                     <a class="collapse-item" href="utilities-animation.html">Animations</a>
                     <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -340,19 +340,24 @@
             <!-- End of Topbar -->
 
             <!--Business logic-->
-            <div id="app">
-                <user-desks th:attr="user-id=${user.id}"></user-desks>
-            </div>
 
-            <div class="card newitem border border-warning">
-                <a href="/newdesk">
-                    <img class="card-img-top" src="/img/newItem.svg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Создать новую доску</h5>
-                    </div>
-                </a>
-            </div>
+            <ul class="list-group desk-community-list" id="app">
+                <div class="desk-com-table" v-for="desk in info">
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div class="flex-column">
+                            {{desk.name}}
+                            <p><small>by ...</small></p>
+                            <span class="badge badge-info badge-pill"> N количество</span>
+                        </div>
+                        <div class="image-parent">
+                            <img src="..." class="img-fluid" alt="quixote">
+                        </div>
+                    </a>
+                    <a class="btn btn-primary" v-bind:href="/setdeskreq/ + desk.id" role="button">Подать заявку</a>
+                </div>
+            </ul>
 
+            <!--The end of business logic-->
 
         </div>
         <!-- End of Main Content -->
@@ -415,7 +420,7 @@
 <!-- Page level custom scripts -->
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="/js/viewjs/components/desk.js"></script>
+<script src="/js/viewjs/community/desk.js"></script>
 
 
 
